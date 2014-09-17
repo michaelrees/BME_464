@@ -45,11 +45,7 @@ int   count_LHS;
 int   LHS;
 int   RHS;
 //ouput pins
-int Output_Pin = 3;    // PWM enabled output pin
-
-// comparator outputs
-boolean Too_High = LOW;  // tells whether the signal is over the acceptable 5V
-boolean Too_Low  = LOW;  // tells whether the signal is under the acceptable -5V
+int Output_Pin = 3;    // PWM enabled output pins
 
 
 void setup() {
@@ -81,25 +77,19 @@ void setup() {
 
 uint8_t i=0;
 
-///****** NOTE - due to inverting amp in pre hardware, values above 2.5 are NEGATIVE, values below 2.5 are POSITIVE *********
-   // actually we arent doing that anymore...
 void loop() {
     char Binary[] = {'+', '0', '0', '0', '.', '0', '0', '0', '0', '0', '0', '0'};
     // read in the input pins
       Input = analogRead(Input_Pin) * 0.00488;
    
      // convert the input value to the non-shifted/scaled value
-
-    
-      Too_High = LOW;//digitalRead(High_Pin);
-      Too_Low  = LOW;//digitalRead(Low_Pin);
-    
+ 
      // Display = (Input * 0.00488); //converts input from arbitrary arduino scale to the actual value, AND multiplies by 2 and subtracts 2.5 to undo our scaling factor and shift.   
       Display = (Input - 2.5) *(-2);
       LHS = Display;
       RHS = (Display - LHS) * 100;
     
-     // ouput to pulse wave modulated output pin
+     // output to pulse wave modulated output pin
      // NOTE: analogRead values go from 0 to 1023, analogWrite values from 0 to 255
     Output = analogRead(Input_Pin) * 0.25;   // corrects for difference in analogRead/Write resolutions
     
@@ -185,7 +175,7 @@ void loop() {
      }
      
 
-      
+    // if we are within 50 msec of 1 second, refresh/display the base 10 and binary values
     if (millis() % 1000 <=50) {
      lcd.setCursor(0,0);
      lcd.print(Display);  
@@ -194,16 +184,6 @@ void loop() {
       lcd.print(Binary);
       lcd.setCursor(12,1);
       lcd.print("  ");
-       // lcd.print(Binary_LHS);
-       // lcd.print('.');
-       // lcd.print(Binary_RHS);
-      
-      //lcd.setCursor(0,1);
-      //lcd.print("Base_2 : ");
-      //lcd.print(Binary);
-
-     
-
     }
   
 }
