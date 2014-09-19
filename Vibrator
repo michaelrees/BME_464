@@ -1,0 +1,19 @@
+Image guidance find cancer- put in radioactive seeds embedded into the tissue, that deliver localized radiation
+
+Task: Come up with a seed and external device to make the seed vibrate at prescribed frequencies
+Second device to take advantage of vibration to see something
+
+Why: Vibration: to take advantage of Doppler. Seeds don’t show up statically 
+See if you can vibrate adjacent tissue and track the therapeutic progress of the seeds
+
+Seeds ~22-16 Gauge needles
+
+Radiation therapy is not important to design spec.
+Beads could stay forever (?);  NOT trans-rectally 
+
+Focal therapy 
+-	Also done in the liver
+
+Physical design depends on vibrational external gizmo (microcontroller to control) -- electromagnetic coupling (what’s the current needed)
+-	How plate stirrers work 
+
